@@ -11,7 +11,7 @@ SHARETA is a modern and stylish e-commerce platform for buying and selling cloth
 
 - **User Authentication:** Secure user accounts with authentication features, allowing customers to sign up, log in, and manage their profiles.
 
-- **Shopping Cart:** Add desired items to the shopping cart, review them, and proceed to checkout. The shopping cart is dynamically updated, providing a smooth and interactive experience.
+- **Shopping Cart:** Add desired items to the shopping cart, review them. The shopping cart is dynamically updated, providing a smooth and interactive experience.
 
 - **Admin Panel:** An easy-to-use admin panel for managing products, orders, and user accounts. Add, update, or remove products effortlessly.
 
