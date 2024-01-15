@@ -5,15 +5,34 @@ const app = express();
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
+const { GridFsStorage } = require("multer-gridfs-storage")
 const path = require('path');
 const cors = require('cors');
+// const { MongoClient } = require('mongodb');
+
+const { ObjectId } = require('mongodb');
+const MongoClient = require("mongodb").MongoClient
+const GridFSBucket = require("mongodb").GridFSBucket
 
 app.use(express.json());
 app.use(cors());
 
+const BASE_URL = process.env.PROTOCOL + process.env.VERCEL_URL;
+const url = process.env.MONGODB_URL;
+
 // Database Connection With MongoDB
 mongoose.connect(process.env.MONGODB_URL);
-console.log(process.env.BASE_URL);
+console.log("Server Running On :", BASE_URL);
+
+const mongoClient = new MongoClient(url)
+mongoClient.connect()
+
+const database = mongoClient.db("e-commerce")
+
+const imageBucket = new GridFSBucket(database, {
+    bucketName: "photos",
+})
+
 
 // API Creation
 
@@ -22,22 +41,64 @@ app.get('/', (req, res) => {
 })
 
 // Image Storage Engine
-const storage = multer.diskStorage({
-    destination: './upload/images',
-    filename: (req, file, cb) => {
-        return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
-    }
-});
+
+const storage = new GridFsStorage({
+    url,
+    file: (req, file) => {
+        //If it is an image, save to photos bucket
+        if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
+            return {
+                bucketName: "photos",
+                filename: `${Date.now()}${file.originalname}`,
+            }
+        } else {
+            //Otherwise save to default bucket
+            return `${Date.now()}${file.originalname}`
+        }
+    },
+})
 
 const upload = multer({ storage: storage })
 
 // Createing Upload Endpoint for images
-app.use('/images', express.static(path.join('upload/images')))
-app.post('/upload', upload.single('product'), (req, res) => {
+// app.use('/images', express.static(path.join('upload/images')))
+app.post('/upload/image', upload.single('product'), (req, res) => {
+    const file = req.file;
+
     res.json({
         success: 1,
-        image_url: `${process.env.BASE_URL}/images/${req.file.filename}`
+        message: "Uploaded",
+        id: file.id,
+        name: file.filename,
+        contentType: file.contentType,
+        image_url: `${process.env.BASE_URL}/view/${file.filename}`
     })
+})
+
+app.get("/view/:filename", async (req, res) => {
+    try {
+        let downloadStream = imageBucket.openDownloadStreamByName(
+            req.params.filename
+        )
+
+        downloadStream.on("data", function (data) {
+            return res.status(200).write(data)
+        })
+
+        downloadStream.on("error", function (data) {
+            return res.status(404).send({ error: "Image not found" })
+        })
+
+        downloadStream.on("end", () => {
+            return res.end()
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({
+            message: "Error Something went wrong",
+            error,
+        })
+    }
 })
 
 // Schema for Creating Products
@@ -45,6 +106,7 @@ const Product = mongoose.model('Product', {
     id: { type: Number, required: true },
     name: { type: String, required: true },
     image: { type: String, required: true },
+    image_id: { type: String, required: true },
     category: { type: String, required: true },
     new_price: { type: Number, required: true },
     old_price: { type: Number, required: true },
@@ -66,6 +128,7 @@ app.post('/addproduct', async (req, res) => {
         id: id,
         name: req.body.name,
         image: req.body.image,
+        image_id: req.body.image_id,
         category: req.body.category,
         new_price: req.body.new_price,
         old_price: req.body.old_price,
@@ -79,9 +142,28 @@ app.post('/addproduct', async (req, res) => {
     })
 });
 
+// Creating API for deleting product image
+// Use this to delete specific image by image_id
+app.post('/remove/image/', async (req, res) => {
+    try {
+        await imageBucket.delete(new ObjectId(req.body.image_id))
+
+        res.status(200).send({
+            message: "Image Deleted",
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({
+            message: "Error Something went wrong",
+            error,
+        })
+    }
+})
+
 // Creating API for deleting products
 app.post('/removeproduct', async (req, res) => {
     await Product.findOneAndDelete({ id: req.body.id })
+    await imageBucket.delete(new ObjectId(req.body.image_id))
     console.log('Removed');
     res.json({ success: true, name: req.body.name })
 });
