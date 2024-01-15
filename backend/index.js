@@ -17,7 +17,7 @@ const GridFSBucket = require("mongodb").GridFSBucket
 app.use(express.json());
 app.use(cors());
 
-const BASE_URL = process.env.PROTOCOL + process.env.VERCEL_URL;
+const BASE_URL = process.env.PROTOCOL + process.env.HOST_URL;
 const url = process.env.MONGODB_URI;
 
 // Database Connection With MongoDB
@@ -71,7 +71,7 @@ app.post('/upload/image', upload.single('product'), (req, res) => {
         id: file.id,
         name: file.filename,
         contentType: file.contentType,
-        image_url: `${process.env.VERCEL_URL}/view/${file.filename}`
+        image_url: `${process.env.HOST_URL}/view/${file.filename}`
     })
 })
 
