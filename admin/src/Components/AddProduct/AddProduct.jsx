@@ -24,7 +24,9 @@ const AddProduct = () => {
   };
 
   const Add_Product = async () => {
-    console.log(productDetails);
+    const addProductBtn = document.querySelector('.addproduct-btn');
+    addProductBtn.disabled = true;
+
     let responseData;
     let product = productDetails;
 
@@ -59,6 +61,17 @@ const AddProduct = () => {
           data.success ? alert('Product Added') : alert('Failed');
         });
     }
+
+    setProductDetails({
+      name: '',
+      image: '',
+      image_id: '',
+      category: 'women',
+      new_price: '',
+      old_price: '',
+    });
+
+    addProductBtn.disabled = false;
   };
 
   return (

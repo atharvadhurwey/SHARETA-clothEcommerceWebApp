@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './ListProduct.css';
-import cross_icon from '../../assets/cross_icon.png';
+import cross_icon from '../../assets/cross_icon2.png';
 
 const BASE_URL = import.meta.env.VITE_PROTOCOL + import.meta.env.VITE_HOST_URL;
 
@@ -37,6 +37,9 @@ const ListProduct = () => {
   return (
     <div className="list-product">
       <h1>All Products List</h1>
+      <div className="totalProducts">
+        <p>Total Products: {allproducts.length}</p>
+      </div>
       <div className="listproduct-format-main">
         <p>Products</p>
         <p>Title</p>
@@ -49,9 +52,8 @@ const ListProduct = () => {
         <hr />
         {allproducts.map((product, index) => {
           return (
-            <>
-              <div
-                key={index}
+            <div key={index}>
+              <div 
                 className="listproduct-format-main listproduct-format"
               >
                 <img
@@ -71,7 +73,7 @@ const ListProduct = () => {
                 />
               </div>
               <hr />
-            </>
+            </div>
           );
         })}
       </div>

@@ -32,11 +32,17 @@
 
 .listproduct-remove-icon {
     cursor: pointer;
-    margin: auto;
+    background-color: red;
+    width: 25px;
 }
 
 .listproduct-allproducts {
+    width: 100%;
     overflow-y: auto;
+}
+
+.totalProducts{
+    font-size: 1.5rem;
 }
 
 @media(max-width: 800px) {
