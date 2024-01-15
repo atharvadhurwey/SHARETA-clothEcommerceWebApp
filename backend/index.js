@@ -71,7 +71,7 @@ app.post('/upload/image', upload.single('product'), (req, res) => {
         id: file.id,
         name: file.filename,
         contentType: file.contentType,
-        image_url: `${process.env.BASE_URL}/view/${file.filename}`
+        image_url: `${process.env.VERCEL_URL}/view/${file.filename}`
     })
 })
 
