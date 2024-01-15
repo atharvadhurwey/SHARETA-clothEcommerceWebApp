@@ -18,10 +18,10 @@ app.use(express.json());
 app.use(cors());
 
 const BASE_URL = process.env.PROTOCOL + process.env.VERCEL_URL;
-const url = process.env.MONGODB_URL;
+const url = process.env.MONGODB_URI;
 
 // Database Connection With MongoDB
-mongoose.connect(process.env.MONGODB_URL);
+mongoose.connect(process.env.MONGODB_URI);
 console.log("Server Running On :", BASE_URL);
 
 const mongoClient = new MongoClient(url)
