@@ -164,7 +164,7 @@ app.post('/remove/image/', async (req, res) => {
 app.post('/removeproduct', async (req, res) => {
     await Product.findOneAndDelete({ id: req.body.id })
     await imageBucket.delete(new ObjectId(req.body.image_id))
-    console.log('Removed');
+    console.log('Product Removed');
     res.json({ success: true, name: req.body.name })
 });
 
