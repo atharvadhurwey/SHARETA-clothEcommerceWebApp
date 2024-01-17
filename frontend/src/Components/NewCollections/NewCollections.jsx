@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './NewCollections.css';
 import Item from '../Items/Item';
+import { useQuery } from 'react-query';
 
 const BASE_URL = process.env.REACT_APP_PROTOCOL + process.env.REACT_APP_HOST_URL;
 
 const NewCollections = () => {
   const [new_collection, setNew_collection] = useState([]);
 
-  useEffect(() => {
+  useQuery('newcollections', () =>
     fetch(`${BASE_URL}/newcollections`)
-      .then((response) => response.json())
-      .then((data) => setNew_collection(data));
-  }, []);
+      .then((res) => res.json())
+      .then((data) => setNew_collection(data))
+  );
 
   return (
     <div>

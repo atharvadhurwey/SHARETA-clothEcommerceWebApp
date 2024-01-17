@@ -1,4 +1,5 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useState } from 'react';
+import { useQuery } from 'react-query';
 
 const BASE_URL = process.env.REACT_APP_PROTOCOL + process.env.REACT_APP_HOST_URL;
 
@@ -16,9 +17,9 @@ const ShopContextProvider = (props) => {
   const [all_product, setAll_Product] = useState([]);
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
-  useEffect(() => {
+  useQuery('allproducts', () => {
     fetch(`${BASE_URL}/allproducts`)
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => setAll_Product(data));
 
     if (localStorage.getItem('auth-token')) {
@@ -34,7 +35,27 @@ const ShopContextProvider = (props) => {
         .then((response) => response.json())
         .then((data) => setCartItems(data));
     }
-  }, []);
+  });
+
+  // useEffect(() => {
+  //   fetch(`${BASE_URL}/allproducts`)
+  //     .then((response) => response.json())
+  //     .then((data) => setAll_Product(data));
+
+  //   if (localStorage.getItem('auth-token')) {
+  //     fetch(`${BASE_URL}/getcart`, {
+  //       method: 'POST',
+  //       headers: {
+  //         Accept: 'application/form-data',
+  //         'auth-token': `${localStorage.getItem('auth-token')}`,
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: '',
+  //     })
+  //       .then((response) => response.json())
+  //       .then((data) => setCartItems(data));
+  //   }
+  // }, []);
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));

@@ -8,11 +8,7 @@ const multer = require('multer');
 const { GridFsStorage } = require("multer-gridfs-storage")
 const path = require('path');
 const cors = require('cors');
-// const { MongoClient } = require('mongodb');
-
-const { ObjectId } = require('mongodb');
-const MongoClient = require("mongodb").MongoClient
-const GridFSBucket = require("mongodb").GridFSBucket
+const { GridFSBucket, ObjectId } = require('mongodb');
 
 app.use(express.json());
 app.use(cors());
@@ -24,15 +20,11 @@ const url = process.env.MONGODB_URI;
 mongoose.connect(process.env.MONGODB_URI);
 console.log("Server Running On :", BASE_URL);
 
-const mongoClient = new MongoClient(url)
-mongoClient.connect()
-
-const database = mongoClient.db("e-commerce")
+const database = mongoose.connection;
 
 const imageBucket = new GridFSBucket(database, {
     bucketName: "photos",
 })
-
 
 // API Creation
 
@@ -61,7 +53,6 @@ const storage = new GridFsStorage({
 const upload = multer({ storage: storage })
 
 // Createing Upload Endpoint for images
-// app.use('/images', express.static(path.join('upload/images')))
 app.post('/upload/image', upload.single('product'), (req, res) => {
     const file = req.file;
 
@@ -77,21 +68,9 @@ app.post('/upload/image', upload.single('product'), (req, res) => {
 
 app.get("/view/:filename", async (req, res) => {
     try {
-        let downloadStream = imageBucket.openDownloadStreamByName(
+        imageBucket.openDownloadStreamByName(
             req.params.filename
-        )
-
-        downloadStream.on("data", function (data) {
-            return res.status(200).write(data)
-        })
-
-        downloadStream.on("error", function (data) {
-            return res.status(404).send({ error: "Image not found" })
-        })
-
-        downloadStream.on("end", () => {
-            return res.end()
-        })
+        ).pipe(res)
     } catch (error) {
         console.log(error)
         res.status(500).send({
@@ -143,7 +122,6 @@ app.post('/addproduct', async (req, res) => {
 });
 
 // Creating API for deleting product image
-// Use this to delete specific image by image_id
 app.post('/remove/image/', async (req, res) => {
     try {
         await imageBucket.delete(new ObjectId(req.body.image_id))

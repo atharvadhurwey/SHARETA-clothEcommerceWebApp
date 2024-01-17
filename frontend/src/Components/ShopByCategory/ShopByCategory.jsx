@@ -15,7 +15,7 @@ const ShopByCategory = () => {
       <div className="card-container">
         <div className="card-item">
           <Link className="card-link" to="/mens">
-            <img src={male_img} alt="" className="card-img" />
+            <img src={male_img} onClick={window.scrollTo(0, 0)} alt="" className="card-img" />
           </Link>
           <div className="card-content">
             <h1>MALE</h1>
@@ -26,7 +26,7 @@ const ShopByCategory = () => {
         </div>
         <div className="card-item">
           <Link className="card-link" to="womens">
-            <img src={female_img} alt="" className="card-img" />
+            <img src={female_img} onClick={window.scrollTo(0, 0)} alt="" className="card-img" />
           </Link>
           <div className="card-content">
             <h1>FEMALE</h1>
@@ -37,7 +37,7 @@ const ShopByCategory = () => {
         </div>
         <div className="card-item">
           <Link className="card-link" to="/kids">
-            <img src={kid_img} alt="" className="card-img" />
+            <img src={kid_img} onClick={window.scrollTo(0, 0)} alt="" className="card-img" />
           </Link>
           <div className="card-content">
             <h1>KID</h1>
