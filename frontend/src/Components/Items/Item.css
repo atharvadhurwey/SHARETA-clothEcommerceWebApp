@@ -1,4 +1,4 @@
-.item {
+/* .item {
     width: 280px;
 }
 
@@ -76,4 +76,122 @@
     .item-price-old {
         font-size: 12px;
     }
+} */
+
+
+
+.product {
+    position: relative;
+    background-color: whitesmoke;
+    width: 240px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.product:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+.product .image {
+    position: relative;
+    width: 100%;
+    /* height: 85%; */
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+.product .image img {
+    overflow: hidden;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: 0% 0%;
+    object-position: 0% 0%;
+    width: 100%;
+    /* height: 360px; */
+}
+
+.product .image .wishlistBtn-container {
+    position: absolute;
+    display: none;
+    right: 8px;
+    top: 8px;
+    transition: 2s ease;
+}
+
+.product .image .wishlistBtn-container svg {
+    stroke: #ef3636;
+    fill: none;
+    width: 26px;
+    height: 26px;
+    transition: 2s ease;
+}
+
+.product .image .wishlistBtn-container svg:hover {
+    fill: #ef3636;
+}
+
+.product .image:hover .wishlistBtn-container {
+    display: block;
+}
+
+.product .product-content {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product .product-content .productCompany {
+    color: #1a1a1a;
+    font-size: small;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.product .product-content .productName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product .product-content .productName a {
+    color: #1a1a1a;
+    font-size: medium;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.product .product-content .productCategory {
+    color: #a5a5a5;
+    font-size: small;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.product .product-content .product-content-price-align {
+    display: flex;
+}
+
+.product .product-content .product-content-price-align .product-content-price-align-symbol {
+    color: #ef3636;
+}
+
+.product .product-content .product-content-price-align .productPrice {
+    color: #ef3636;
+}
+
+.product .product-content .productView {
+    margin: 0 auto;
+    margin-top: 1px;
 }

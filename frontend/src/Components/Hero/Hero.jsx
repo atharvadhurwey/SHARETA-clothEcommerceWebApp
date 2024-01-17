@@ -4,8 +4,8 @@ import './Hero.css';
 
 const Hero = () => {
   return (
-    <section class="main-home">
-      <div class="main-text">
+    <section className="main-home">
+      <div className="main-text">
         <h1>
           Shop with us for the perfect <br />
           blend of style and comfort
@@ -15,7 +15,7 @@ const Hero = () => {
           that without the doubt suits you best. <br />
           And we mean it
         </p>
-        <button class="btn-5">CATEGORIES -{'>'}</button>
+        <button className="btn-5">CATEGORIES -{'>'}</button>
       </div>
     </section>
   );

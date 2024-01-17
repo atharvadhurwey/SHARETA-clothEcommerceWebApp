@@ -1,0 +1,21 @@
+.whatTheyThinkAboutUs {
+    text-transform: capitalize;
+    max-width: 1100px;
+    margin: 0 auto;
+    margin-top: 90px;
+    margin-bottom: 20px;
+}
+
+.whatTheyThinkAboutUs h1 {
+    color: #ffffff;
+    text-align: center;
+}
+
+.aboutUs-slider-container {
+    background-color: whitesmoke;
+    max-width: 950px;
+    height: 200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}

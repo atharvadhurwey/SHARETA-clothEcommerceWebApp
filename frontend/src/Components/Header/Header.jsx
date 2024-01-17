@@ -28,43 +28,47 @@ const Header = () => {
               </svg>
             </i>
           </div>
-          <li
-            onClick={() => {
-              setMenu('shop');
-            }}
-            className="nav_item"
-          >
-            <Link className={menu === 'shop' ? 'nav_link menu-active' : 'nav_link'} to="/">
+          <li className="nav_item">
+            <Link
+              onClick={() => {
+                setMenu('shop');
+              }}
+              className={menu === 'shop' ? 'nav_link menu-active' : 'nav_link'}
+              to="/"
+            >
               HOME
             </Link>
           </li>
-          <li
-            onClick={() => {
-              setMenu('mens');
-            }}
-            className="nav_item"
-          >
-            <Link className={menu === 'mens' ? 'nav_link menu-active' : 'nav_link'} to="/mens">
+          <li className="nav_item">
+            <Link
+              onClick={() => {
+                setMenu('mens');
+              }}
+              className={menu === 'mens' ? 'nav_link menu-active' : 'nav_link'}
+              to="/mens"
+            >
               MEN
             </Link>
           </li>
-          <li
-            onClick={() => {
-              setMenu('womens');
-            }}
-            className="nav_item"
-          >
-            <Link className={menu === 'womens' ? 'nav_link menu-active' : 'nav_link'} to="/womens">
+          <li className="nav_item">
+            <Link
+              onClick={() => {
+                setMenu('womens');
+              }}
+              className={menu === 'womens' ? 'nav_link menu-active' : 'nav_link'}
+              to="/womens"
+            >
               WOMEN
             </Link>
           </li>
-          <li
-            onClick={() => {
-              setMenu('kids');
-            }}
-            className="nav_item"
-          >
-            <Link className={menu === 'kids' ? 'nav_link menu-active' : 'nav_link'} to="/kids">
+          <li className="nav_item">
+            <Link
+              onClick={() => {
+                setMenu('kids');
+              }}
+              className={menu === 'kids' ? 'nav_link menu-active' : 'nav_link'}
+              to="/kids"
+            >
               KID
             </Link>
           </li>

@@ -11,13 +11,13 @@ import women_banner from './Components/Assets/banner_women.png'
 import kid_banner from './Components/Assets/banner_kids.png'
 import Header from './Components/Header/Header';
 import FollowUs from './Components/FollowUs/FollowUs';
-import Navbar from './Components/Navbar/Navbar';
+// import Navbar from './Components/Navbar/Navbar';
 
 function App() {
   return (
     <div>
       <BrowserRouter>
-        <Navbar />
+        {/* <Navbar /> */}
         <Header />
         <Routes>
           <Route path='/' element={<Shop />} />
