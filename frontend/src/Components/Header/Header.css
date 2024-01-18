@@ -81,11 +81,12 @@ button:hover {
     padding: 5px 10px;
     z-index: 3;
     overflow: hidden;
-    border: 1px solid #ffffff;
+    border: 1px solid #ef3636;
+    color: #ef3636;
 }
 
 .btn-5::after {
-    background-color: #f00;
+    background-color: #ef3636;
     height: 100%;
     left: -50%;
     top: 0;
@@ -418,23 +419,6 @@ button:hover {
     top: -236px;
     background-color: #1a1a1a;
 }
-
-
-
-
-
-.main-body .showMore-btn {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 80px;
-}
-
-
-
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 768px) {

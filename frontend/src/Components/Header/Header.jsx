@@ -42,6 +42,17 @@ const Header = () => {
           <li className="nav_item">
             <Link
               onClick={() => {
+                setMenu('cloths');
+              }}
+              className={menu === 'cloths' ? 'nav_link menu-active' : 'nav_link'}
+              to="/cloths"
+            >
+              CLOTHS
+            </Link>
+          </li>
+          <li className="nav_item">
+            <Link
+              onClick={() => {
                 setMenu('mens');
               }}
               className={menu === 'mens' ? 'nav_link menu-active' : 'nav_link'}
@@ -70,6 +81,17 @@ const Header = () => {
               to="/kids"
             >
               KID
+            </Link>
+          </li>
+          <li className="nav_item">
+            <Link
+              onClick={() => {
+                setMenu('about');
+              }}
+              className={menu === 'about' ? 'nav_link menu-active' : 'nav_link'}
+              to="/about"
+            >
+              ABOUT
             </Link>
           </li>
           {/* <li onClick={() => { setMenu('shop'); }} className="nav_item" >

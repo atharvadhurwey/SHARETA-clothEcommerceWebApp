@@ -15,7 +15,7 @@ const Hero = () => {
           that without the doubt suits you best. <br />
           And we mean it
         </p>
-        <button className="btn-5">CATEGORIES -{'>'}</button>
+        <button className="btn-5">EXPLORE -{'>'}</button>
       </div>
     </section>
   );

@@ -13,10 +13,22 @@ const Shop = () => {
   return (
     <div>
       <Hero />
+      
+      {/* black shape  */}
+      <div className="shape"></div>
+
       <ShopByCategory />
       {/* <Popular /> */}
       <NewCollections />
       <AboutUs />
+
+      {/* black shape  */}
+      <div className="shape2container">
+        <div className="shape2container-final">
+          <div className="shape2"></div>
+        </div>
+      </div>
+      
       <WhatTheyThink />
       <CompanyLogo />
       {/* <Offers />
