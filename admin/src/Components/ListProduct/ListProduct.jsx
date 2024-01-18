@@ -30,11 +30,16 @@ const ListProduct = () => {
         id: id,
         image_id: image_id,
       }),
-    });
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+
+    console.log('i was here');
+    window.location.reload(false);
     await fetchInfo();
   };
 
-  return (
+  return allproducts.length > 0 ? (
     <div className="list-product">
       <h1>All Products List</h1>
       <div className="totalProducts">
@@ -54,21 +59,12 @@ const ListProduct = () => {
           return (
             <div key={index}>
               <div className="listproduct-format-main listproduct-format">
-                <img
-                  className="listproduct-product-icon"
-                  src={product.image}
-                  alt=""
-                />
+                <img className="listproduct-product-icon" src={product.image} alt="" />
                 <p>{product.name}</p>
                 <p>${product.old_price}</p>
                 <p>${product.new_price}</p>
                 <p>{product.category}</p>
-                <img
-                  onClick={() => remove_product(product.id, product.image_id)}
-                  src={cross_icon}
-                  alt=""
-                  className="listproduct-remove-icon"
-                />
+                <img onClick={() => remove_product(product.id, product.image_id)} src={cross_icon} alt="" className="listproduct-remove-icon" />
               </div>
               <hr />
             </div>
@@ -76,6 +72,8 @@ const ListProduct = () => {
         })}
       </div>
     </div>
+  ) : (
+    <div>Loading...</div>
   );
 };
 

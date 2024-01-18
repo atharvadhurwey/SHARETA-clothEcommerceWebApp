@@ -13,6 +13,7 @@ const { GridFSBucket, ObjectId } = require('mongodb');
 app.use(express.json());
 app.use(cors());
 
+
 const BASE_URL = process.env.PROTOCOL + process.env.HOST_URL;
 const url = process.env.MONGODB_URI;
 
@@ -26,6 +27,12 @@ const imageBucket = new GridFSBucket(database, {
     bucketName: "photos",
 })
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
 // API Creation
 
 app.get('/', (req, res) => {
