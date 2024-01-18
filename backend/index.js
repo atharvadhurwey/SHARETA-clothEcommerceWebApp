@@ -8,7 +8,7 @@ const multer = require('multer');
 const { GridFsStorage } = require("multer-gridfs-storage")
 const path = require('path');
 const cors = require('cors');
-const { GridFSBucket, ObjectId } = require('mongodb');
+const { GridFSBucket, ObjectId, MongoClient } = require('mongodb');
 
 app.use(express.json());
 app.use(cors());
@@ -21,18 +21,21 @@ const url = process.env.MONGODB_URI;
 mongoose.connect(process.env.MONGODB_URI);
 console.log("Server Running On :", BASE_URL);
 
-const database = mongoose.connection;
+const mongoClient = new MongoClient(url)
+mongoClient.connect()
+
+const database = mongoClient.db("e-commerce")
 
 const imageBucket = new GridFSBucket(database, {
     bucketName: "photos",
 })
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-});
+// app.use((req, res, next) => {
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+//     next();
+// });
 // API Creation
 
 app.get('/', (req, res) => {
@@ -94,6 +97,8 @@ const Product = mongoose.model('Product', {
     image: { type: String, required: true },
     image_id: { type: String, required: true },
     category: { type: String, required: true },
+    brand: { type: String, required: true },
+    description: { type: String, required: true },
     new_price: { type: Number, required: true },
     old_price: { type: Number, required: true },
     date: { type: Date, default: Date.now },
@@ -116,6 +121,8 @@ app.post('/addproduct', async (req, res) => {
         image: req.body.image,
         image_id: req.body.image_id,
         category: req.body.category,
+        brand: req.body.brand,
+        description: req.body.description,
         new_price: req.body.new_price,
         old_price: req.body.old_price,
     });
@@ -149,8 +156,8 @@ app.post('/remove/image/', async (req, res) => {
 app.post('/removeproduct', async (req, res) => {
     await Product.findOneAndDelete({ id: req.body.id })
     await imageBucket.delete(new ObjectId(req.body.image_id))
-    console.log('Product Removed');
-    res.json({ success: true, name: req.body.name })
+    console.log(`Product id:${req.body.id}  Removed`);
+    res.json({ success: true, name: req.body.id })
 });
 
 // Creating API for getting all products

@@ -23,7 +23,7 @@ const ListProduct = () => {
     await fetch(`${BASE_URL}/removeproduct`, {
       method: 'POST',
       headers: {
-        Accept: 'application/json',
+        Accept: 'form-data',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -35,8 +35,8 @@ const ListProduct = () => {
       .then((data) => console.log(data));
 
     console.log('i was here');
-    window.location.reload(false);
     await fetchInfo();
+    window.location.reload(false);
   };
 
   return allproducts.length > 0 ? (
