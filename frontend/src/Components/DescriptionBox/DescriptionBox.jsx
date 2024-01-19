@@ -4,6 +4,17 @@ import './DescriptionBox.css';
 const DescriptionBox = (props) => {
   const [otherDetail, setOtherDetail] = useState('desc');
 
+  // import all images from employee folder
+  function importAllImg(r) {
+    let images = {};
+    r.keys().map((item, index) => {
+      return images[item.replace('./', '')] = r(item);
+    });
+    return images;
+  }
+  const images = importAllImg(require.context('../../Components/Assets/sizeGuide', false, /\.(png|jpe?g|svg)$/));
+
+  const description = props.description.split('.');
   return (
     <>
       {/* <div className="descriptionbox">
@@ -61,30 +72,12 @@ const DescriptionBox = (props) => {
         </div>
         <div className="product-otherDetails-content">
           <div className="product-otherDetails-desc " style={otherDetail === 'desc' ? { display: 'block' } : { display: 'none  ' }} id="otherDetail1Div">
-            <p>{props.description}</p>
+            {description.map((item, i) => {
+              return <p key={i}>{item}</p>;
+            })}
           </div>
           <div className="product-otherDetails-size " style={otherDetail === 'size' ? { display: 'block' } : { display: 'none  ' }} id="otherDetail2Div">
-            <p>
-              A size chart is a reference table that provides measurements for various body parts to help individuals determine the best size for clothing, shoes, or accessories. The specific measurements included in a
-              size chart will vary depending on the item being sized, but some common measurements that may be included are:
-              <br />
-              <br />
-              Chest/bust: the circumference around the fullest part of the chest or bust
-              <br />
-              Waist: the circumference around the narrowest part of the waist
-              <br />
-              Hips: the circumference around the widest part of the hips
-              <br />
-              Inseam: the distance from the crotch to the ankle
-              <br />
-              Sleeve length: the distance from the center of the back of the neck to the end of the sleeve
-              <br />
-              Shoe size: the length of the foot in inches or centimeters
-              <br />
-              <br />
-              It is important to note that size charts may vary depending on the brand, country of origin, and style of the item. Therefore, it is always a good idea to consult the specific size chart provided by the
-              manufacturer or retailer of the item you are interested in purchasing.
-            </p>
+            <div className="sizeGuide_image_container">{images[`${props.type}.jpg`] ? <img src={images[`${props.type}.jpg`]} alt="" /> : <div>Size Chart for this product is not found</div>}</div>
           </div>
           <div className="product-otherDetails-return " style={otherDetail === 'ship' ? { display: 'block' } : { display: 'none  ' }} id="otherDetail3Div">
             <h1>Returns Policy</h1>
