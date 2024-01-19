@@ -21,6 +21,12 @@ button:disabled {
     margin-bottom: 20px;
 }
 
+.addproduct-itemfield-alert {
+    color: #ef3636;
+    opacity: .5;
+    font-size: 14px;
+}
+
 .addproduct-itemfield>p {
     margin: 5px 0px;
 }

@@ -18,7 +18,14 @@ const AddProduct = () => {
     old_price: '',
   });
 
+  // max file size is 2mb
+  const maxFileSize = 2 * 1024 * 1024;
   const imageHandler = (e) => {
+    const fileSize = e.target.files[0].size;
+    if (fileSize > maxFileSize) {
+      alert('file size is too large');
+      return;
+    }
     setImage(e.target.files[0]);
   };
 
@@ -138,10 +145,12 @@ const AddProduct = () => {
         <textarea value={productDetails.description} rows={10} cols={40} onChange={changeHandler} name="description" placeholder="Type Here" style={{ resize: 'none' }} />
       </div>
       <div className="addproduct-itemfield">
+        <p>Product Image</p>
         <label htmlFor="file-input">
           <img src={image ? URL.createObjectURL(image) : upload_area} className="addproduct-thumnail-img" alt="" />
         </label>
         <input onChange={imageHandler} type="file" name="image" id="file-input" hidden />
+        <div className="addproduct-itemfield-alert">accepted file size is below 2mb</div>
       </div>
       <button
         onClick={() => {
