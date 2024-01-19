@@ -12,6 +12,7 @@ const AddProduct = () => {
     image_id: '',
     category: 'women',
     brand: 'chicola',
+    type: 'shirt',
     description: '',
     new_price: '',
     old_price: '',
@@ -70,6 +71,7 @@ const AddProduct = () => {
       image_id: '',
       category: 'women',
       brand: 'chicola',
+      type: 'shirt',
       description: '',
       new_price: '',
       old_price: '',
@@ -77,6 +79,9 @@ const AddProduct = () => {
 
     addProductBtn.disabled = false;
   };
+
+  const brands = ['chicola', 'clothculture', 'outfitvista', 'zyla'];
+  const types = ['shirt', 'top', 'dress', 'jeans', 'hoodie', 'crop hoodie', 'jacket', 'sweater', 'sweatshirt', 't-shirt', 'long sleeves', 'polo', 'oversized', 'trouser', 'skirt', 'shorts', 'suit', 'coat', 'crop top'];
 
   return (
     <div className="add-product">
@@ -94,22 +99,39 @@ const AddProduct = () => {
           <input value={productDetails.new_price} onChange={changeHandler} type="text" name="new_price" placeholder="Type Here" />
         </div>
       </div>
-      <div className="addproduct-itemfield">
-        <p>Product Category</p>
-        <select value={productDetails.category} onChange={changeHandler} name="category" className="add-product-selector">
-          <option value="women">Women</option>
-          <option value="men">Men</option>
-          <option value="kid">Kid</option>
-        </select>
-      </div>
-      <div className="addproduct-itemfield">
-        <p>Product Brand</p>
-        <select value={productDetails.brand} onChange={changeHandler} name="brand" className="add-product-selector">
-          <option value="chicola">Chicola</option>
-          <option value="clothculture">Clothculture</option>
-          <option value="outfitvista">Outfitvista</option>
-          <option value="zyla">Zyla</option>
-        </select>
+      <div className="allproduct-selectfields">
+        <div className="addproduct-itemfield">
+          <p>Product Category</p>
+          <select value={productDetails.category} onChange={changeHandler} name="category" className="add-product-selector">
+            <option value="women">Women</option>
+            <option value="men">Men</option>
+            <option value="kid">Kid</option>
+          </select>
+        </div>
+        <div className="addproduct-itemfield">
+          <p>Product Brand</p>
+          <select value={productDetails.brand} onChange={changeHandler} name="brand" className="add-product-selector">
+            {brands.map((brand, index) => {
+              return (
+                <option key={index} value={brand}>
+                  {brand}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        <div className="addproduct-itemfield">
+          <p>Product Type</p>
+          <select value={productDetails.type} onChange={changeHandler} name="type" className="add-product-selector">
+            {types.map((type, index) => {
+              return (
+                <option key={index} value={type}>
+                  {type}
+                </option>
+              );
+            })}
+          </select>
+        </div>
       </div>
       <div className="addproduct-itemfield">
         <p>Product Description</p>

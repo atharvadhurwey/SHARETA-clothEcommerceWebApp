@@ -69,10 +69,11 @@ const ProductDisplay = (props) => {
 
       <div className="product-detail-container">
         <div className="product-detail">
-          <div className="product-brand">ClothCulture</div>
+          <div className="product-brand">{product.brand}</div>
           <div className="product-name">{product.name}</div>
           <div className="product-type">{product.category}</div>
-          <div className="product-summary">THIS is good Dress</div>
+          <div className="product-type">{product.type}</div>
+          {/* <div className="product-summary">THIS is good Dress</div> */}
           <div className="product-selectSize">
             <h1>SIZE</h1>
             <form className="product-selectSize-form" action="">

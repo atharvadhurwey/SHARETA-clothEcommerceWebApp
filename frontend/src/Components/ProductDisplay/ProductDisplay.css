@@ -118,9 +118,10 @@
     align-items: center;
     text-align: center;
     padding: 0 80px;
+    text-transform: capitalize;
 }
 
-.product-main-container .product-detail-container .product-detail .product-brand a {
+.product-main-container .product-detail-container .product-detail .product-brand {
     color: #ef3636;
     font-size: 30px;
     letter-spacing: 5px;
@@ -128,12 +129,12 @@
 }
 
 .product-main-container .product-detail-container .product-detail .product-name {
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 30px;
+    font-weight: 600;
     text-transform: uppercase;
 }
 
-.product-main-container .product-detail-container .product-detail .product-type a {
+.product-main-container .product-detail-container .product-detail .product-type {
     color: #a5a5a5;
     text-transform: uppercase;
     text-decoration: none;
@@ -204,5 +205,3 @@
 .product-main-container .product-detail-container .product-image img {
     height: 600px;
 }
-
-

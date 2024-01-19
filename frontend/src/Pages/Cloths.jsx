@@ -14,7 +14,7 @@ const Cloths = () => {
         <section className="products-main-container">
           <div className="product-container" id="filteredProducts">
             {all_product.map((item, i) => {
-              return <Item key={i} id={item.id} image={item.image} name={item.name} category={item.category} new_price={item.new_price} old_price={item.old_price} />;
+              return <Item key={i} id={item.id} image={item.image} name={item.name} new_price={item.new_price} old_price={item.old_price} type={item.type} brand={item.brand} />;
             })}
           </div>
         </section>

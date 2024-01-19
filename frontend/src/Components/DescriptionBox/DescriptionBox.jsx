@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './DescriptionBox.css';
 
-const DescriptionBox = () => {
+const DescriptionBox = (props) => {
   const [otherDetail, setOtherDetail] = useState('desc');
 
   return (
@@ -61,10 +61,7 @@ const DescriptionBox = () => {
         </div>
         <div className="product-otherDetails-content">
           <div className="product-otherDetails-desc " style={otherDetail === 'desc' ? { display: 'block' } : { display: 'none  ' }} id="otherDetail1Div">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, maiores dignissimos eligendi minus nemo, deserunt asperiores aspernatur architecto necessitatibus libero tenetur saepe, et adipisci provident
-              in illum quos ea itaque!
-            </p>
+            <p>{props.description}</p>
           </div>
           <div className="product-otherDetails-size " style={otherDetail === 'size' ? { display: 'block' } : { display: 'none  ' }} id="otherDetail2Div">
             <p>

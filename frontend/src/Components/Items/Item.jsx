@@ -22,11 +22,11 @@ const Item = (props) => {
           </Link>
         </div>
         <div className="product-content">
-          <h2 className="productCompany">Preetify</h2>
+          <h2 className="productCompany">{props.brand}</h2>
           <h2 className="productName">
             <Link>{props.name}</Link>
           </h2>
-          <h3 className="productCategory">{props.category}</h3>
+          <h3 className="productCategory">{props.type}</h3>
           <div className="product-content-price-align">
             <span className="product-content-price-align-symbol">$</span>
             <span className="productPrice">{props.new_price}</span>

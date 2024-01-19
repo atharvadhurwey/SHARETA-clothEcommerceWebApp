@@ -17,6 +17,7 @@ button:disabled {
     width: 100%;
     color: #1e2124;
     font-size: 16px;
+    text-transform: capitalize;
     margin-bottom: 20px;
 }
 
@@ -42,6 +43,10 @@ button:disabled {
     gap: 40px;
 }
 
+.allproduct-selectfields {
+    display: flex;
+}
+
 .add-product-selector {
     padding: 10px;
     width: 100px;
@@ -50,6 +55,7 @@ button:disabled {
     color: #7b7b7b;
     border: 1px solid #7b7b7b8d;
     border-radius: 4px;
+    text-transform: capitalize;
 }
 
 .addproduct-thumnail-img {

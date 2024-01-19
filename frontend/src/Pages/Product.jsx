@@ -16,7 +16,7 @@ const Product = () => {
         <Breadcrum crum={'HOME / SHOP / CLOTHS '} name={product.category} banner={'product'} />
         <section className="product-main-container">
           <ProductDisplay product={product} />
-          <DescriptionBox />
+          <DescriptionBox category={product.category} type={product.type} description={product.description} />
         </section>
         {/* <RelatedProducts /> */}
       </div>

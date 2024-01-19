@@ -34,9 +34,7 @@ const ListProduct = () => {
       .then((res) => res.json())
       .then((data) => console.log(data));
 
-    console.log('i was here');
     await fetchInfo();
-    window.location.reload(false);
   };
 
   return allproducts.length > 0 ? (
