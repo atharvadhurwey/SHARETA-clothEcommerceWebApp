@@ -14,6 +14,8 @@ import FollowUs from './Components/FollowUs/FollowUs';
 import { useLayoutEffect } from 'react';
 import Cloths from './Pages/Cloths';
 import About from './Pages/About';
+import Brand from './Pages/Brands';
+import ShopBrand from './Pages/ShopBrand';
 // import Navbar from './Components/Navbar/Navbar';
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
         <Route path='product' element={<Product />}>
           <Route path=':productId' element={<Product />} />
         </Route>
+        <Route path='/brands' element={<Brand />} />
+        <Route path='/brands/:brandName' element={<ShopBrand />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/login' element={<LoginSignup />} />
       </Routes>

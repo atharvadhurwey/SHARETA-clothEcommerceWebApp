@@ -86,6 +86,17 @@ const Header = () => {
           <li className="nav_item">
             <Link
               onClick={() => {
+                setMenu('brands');
+              }}
+              className={menu === 'brands' ? 'nav_link menu-active' : 'nav_link'}
+              to="/brands"
+            >
+              BRANDS
+            </Link>
+          </li>
+          <li className="nav_item">
+            <Link
+              onClick={() => {
                 setMenu('about');
               }}
               className={menu === 'about' ? 'nav_link menu-active' : 'nav_link'}

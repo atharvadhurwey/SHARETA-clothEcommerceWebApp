@@ -7,7 +7,7 @@ import kid_img from '../Assets/kid.jpg';
 
 const ShopByCategory = () => {
   return (
-    <div>
+    <div className='byCategory-main-container'>
       <div className="byCategory">
         <h1>SHOP BY CATEGORIES</h1>
         <p>Pick Link category you need</p>
