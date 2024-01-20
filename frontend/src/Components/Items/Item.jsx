@@ -18,13 +18,13 @@ const Item = (props) => {
       <div className="product">
         <div className="image">
           <Link to={`/product/${props.id}`}>
-            <img src={props.image}  alt="" />
+            <img src={props.image} alt="" />
           </Link>
         </div>
         <div className="product-content">
           <h2 className="productCompany">{props.brand}</h2>
           <h2 className="productName">
-            <Link>{props.name}</Link>
+            <Link to={`/product/${props.id}`}>{props.name}</Link>
           </h2>
           <h3 className="productCategory">{props.type}</h3>
           <div className="product-content-price-align">
