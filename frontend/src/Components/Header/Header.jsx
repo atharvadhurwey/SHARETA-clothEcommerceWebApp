@@ -2,16 +2,25 @@ import React, { useContext, useState } from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../../Context/ShopContext';
+import AccountMenu from './AccountMenu';
 
 const Header = () => {
   const [menu, setMenu] = useState('shop');
+  const [accountMenuVisible, setAccountMenuVisible] = useState(false); // [accountMenuVisible, setAccountMenuVisible
+  const [categoryMenuVisible, setCategoryMenuVisible] = useState(false); // [categoryMenuVisible, setCategoryMenuVisible
   const { getTotalCartItems } = useContext(ShopContext);
 
   // account div toggle
-  function accountToggle(e) {
-    const accountBtn = document.querySelector('#accountBtn-toggle');
-    accountBtn.classList.toggle('active');
-  }
+  const handleMouseEnter = (e) => {
+    if ((e.target.className === 'nav_link') || (e.target.className === 'nav_link menu-active')) {
+      return setCategoryMenuVisible(true);
+    }
+    setAccountMenuVisible(true);
+  };
+  const handleMouseLeave = () => {
+    setCategoryMenuVisible(false);
+    setAccountMenuVisible(false);
+  };
 
   return (
     <header className="main-header">
@@ -51,37 +60,50 @@ const Header = () => {
             </Link>
           </li>
           <li className="nav_item">
-            <Link
-              onClick={() => {
-                setMenu('mens');
-              }}
-              className={menu === 'mens' ? 'nav_link menu-active' : 'nav_link'}
-              to="/mens"
-            >
-              MEN
-            </Link>
-          </li>
-          <li className="nav_item">
-            <Link
-              onClick={() => {
-                setMenu('womens');
-              }}
-              className={menu === 'womens' ? 'nav_link menu-active' : 'nav_link'}
-              to="/womens"
-            >
-              WOMEN
-            </Link>
-          </li>
-          <li className="nav_item">
-            <Link
-              onClick={() => {
-                setMenu('kids');
-              }}
-              className={menu === 'kids' ? 'nav_link menu-active' : 'nav_link'}
-              to="/kids"
-            >
-              KID
-            </Link>
+            <div className="category-menu" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+              <div className={menu === 'mens' || menu === 'womens' || menu === 'kids' ? 'nav_link menu-active' : 'nav_link'} to="/mens">
+                CATEGORY
+              </div>
+              {categoryMenuVisible && (
+                <div className="category-dropdown">
+                  <div className="category-submenu">
+                    <div className="category-submenu-item">
+                      <Link
+                        to="/mens"
+                        onClick={() => {
+                          setMenu('mens');
+                        }}
+                        className={menu === 'mens' ? 'menu-active' : ''}
+                      >
+                        Mens
+                      </Link>
+                    </div>
+                    <div className="category-submenu-item">
+                      <Link
+                        to="/womens"
+                        onClick={() => {
+                          setMenu('womens');
+                        }}
+                        className={menu === 'womens' ? 'menu-active' : ''}
+                      >
+                        Womens
+                      </Link>
+                    </div>
+                    <div className="category-submenu-item">
+                      <Link
+                        to="/kids"
+                        onClick={() => {
+                          setMenu('kids');
+                        }}
+                        className={menu === 'kids' ? 'menu-active' : ''}
+                      >
+                        Kids
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </li>
           <li className="nav_item">
             <Link
@@ -122,18 +144,21 @@ const Header = () => {
           </li> */}
         </ul>
         <div className="right">
-          <button style={{ display: 'inline' }} className="navbar-icon" id="searchToggle">
+          {/* <button style={{ display: 'inline' }} className="navbar-icon" id="searchToggle">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-          </button>
-          <button style={{ display: 'inline' }} className="navbar-icon" id="accountToggle" onClick={accountToggle}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-          </button>
+          </button> */}
+          <div className="accountMenu" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <button style={{ display: 'inline' }} className="navbar-icon" id="accountToggle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </button>
+            {accountMenuVisible && <AccountMenu />}
+          </div>
           <span className="cart-icon navbar-icon">
             <Link to="/cart">
               <button type="submit" id="mainBtn">
@@ -148,11 +173,10 @@ const Header = () => {
           </span>
 
           {/* hidden account div */}
-          <div className="header-accountBtn-toggle" id="accountBtn-toggle">
+          {/* <div className="header-accountBtn-toggle" id="accountBtn-toggle">
             <div className="accountbox-main-container">
               {localStorage.getItem('auth-token') ? (
                 <div>
-                  {/* <Link to="/">Dashboard</Link> */}
                   <div
                     className="link"
                     onClick={() => {
@@ -171,7 +195,7 @@ const Header = () => {
                 </div>
               )}
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="toggle_menu" id="toggle-menu">
           <i>

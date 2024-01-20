@@ -5,8 +5,6 @@ import brands from '../Components/Assets/brands';
 import { Link } from 'react-router-dom';
 
 const Brand = () => {
-  console.log(brands);
-
   function importAllImg(r) {
     let images = {};
     r.keys().map((item, index) => {
