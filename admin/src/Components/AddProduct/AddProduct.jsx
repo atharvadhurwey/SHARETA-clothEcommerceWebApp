@@ -87,7 +87,7 @@ const AddProduct = () => {
     addProductBtn.disabled = false;
   };
 
-  const brands = ['chicola', 'clothculture', 'outfitvista', 'zyla'];
+  const brands = ['chicola', 'clothus', 'clothculture', 'outfitvista', 'prettify', 'stylence', 'trendzone', 'zyla'];
   const types = ['shirt', 'top', 'dress', 'jeans', 'hoodie', 'crop hoodie', 'jacket', 'sweater', 'sweatshirt', 't-shirt', 'long sleeves', 'polo', 'oversized', 'trouser', 'skirt', 'shorts', 'suit', 'coat', 'crop top'];
 
   return (
