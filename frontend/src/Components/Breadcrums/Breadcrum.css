@@ -10,11 +10,49 @@
 }
 
 .upperBanner-product {
+    background: url("../Assets/banner/productBanner.jpg");
+    background-position: 0 20%;
+}
+
+.upperBanner-about {
+    background: url("../../Components/Assets/banner/aboutBanner.jpg");
+    background-position: 0px -53%;
+}
+
+.upperBanner-brands {
+    background: url("../../Components/Assets/banner/brandlistBanner.jpg");
+    background-position: 0 -919px;
+}
+
+.upperBanner-cloths {
+    background: url("../../Components/Assets/banner/productsBanner.jpg");
+    background-position: 0 -222px;
+}
+
+.upperBanner-brand {
+    background: url("../../Components/Assets/banner/paymentSuccessBanner.jpg");
+    background-position: 0 -606px;
+}
+
+.upperBanner-men {
+    background: url("../../Components/Assets/banner/menBanner.jpg");
+    background-position: 0 50%;
+}
+
+.upperBanner-women {
+    background: url("../../Components/Assets/banner/womenBanner.jpg");
+    background-position: 0 -399px;
+}
+
+.upperBanner-kid {
+    background: url("../../Components/Assets/banner/kidBanner.jpg");
+    background-position: 0 -672px;
+}
+
+.upperBanner-container {
     position: relative;
     width: 100%;
     height: 200px;
-    background: url("../Assets/cloths/productBanner.jpg");
-    background-position: 0 -222px;
     background-size: cover;
     display: flex;
     justify-content: center;

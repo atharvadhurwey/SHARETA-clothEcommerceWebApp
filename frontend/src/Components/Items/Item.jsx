@@ -18,7 +18,7 @@ const Item = (props) => {
       <div className="product">
         <div className="image">
           <Link to={`/product/${props.id}`}>
-            <img src={props.image} alt="" />
+            <img src={props.image} loading='lazy' alt="" />
           </Link>
         </div>
         <div className="product-content">
