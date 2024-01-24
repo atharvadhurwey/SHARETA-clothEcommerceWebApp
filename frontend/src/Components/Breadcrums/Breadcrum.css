@@ -49,6 +49,11 @@
     background-position: 0 -672px;
 }
 
+.upperBanner-cart {
+    background: url("../../Components/Assets/banner/cartBanner.jpg");
+    background-position: 0 -606px;
+}
+
 .upperBanner-container {
     position: relative;
     width: 100%;
