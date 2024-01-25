@@ -54,6 +54,16 @@
     background-position: 0 -606px;
 }
 
+.upperBanner-dashboard {
+    background: url("../../Components/Assets/banner/dashboardBanner.jpg");
+    background-position: 0 -1183px;
+}
+
+.upperBanner-login {
+    background: url("../../Components/Assets/banner/loginBanner.jpg");
+    background-position: 0 -549px;
+}
+
 .upperBanner-container {
     position: relative;
     width: 100%;

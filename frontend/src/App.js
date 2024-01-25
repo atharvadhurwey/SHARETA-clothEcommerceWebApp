@@ -16,6 +16,7 @@ import Cloths from './Pages/Cloths';
 import About from './Pages/About';
 import Brand from './Pages/Brands';
 import ShopBrand from './Pages/ShopBrand';
+import Dashboard from './Pages/Dashboard';
 // import Navbar from './Components/Navbar/Navbar';
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         </Route>
         <Route path='/brands' element={<Brand />} />
         <Route path='/brands/:brandName' element={<ShopBrand />} />
+        <Route path='/user/dashboard' element={<Dashboard />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/login' element={<LoginSignup />} />
       </Routes>

@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../../Context/ShopContext';
-import AccountMenu from './AccountMenu';
 
 const Header = () => {
   const [menu, setMenu] = useState('shop');
@@ -12,7 +11,7 @@ const Header = () => {
 
   // account div toggle
   const handleMouseEnter = (e) => {
-    if ((e.target.className === 'nav_link') || (e.target.className === 'nav_link menu-active')) {
+    if (e.target.className === 'nav_link' || e.target.className === 'nav_link menu-active') {
       return setCategoryMenuVisible(true);
     }
     setAccountMenuVisible(true);
@@ -152,22 +151,80 @@ const Header = () => {
           </button> */}
           <div className="accountMenu" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <button style={{ display: 'inline' }} className="navbar-icon" id="accountToggle">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className={menu === 'dashboard' ? 'icon-svg active' : 'icon-svg'}
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
               </svg>
             </button>
-            {accountMenuVisible && <AccountMenu />}
+            {accountMenuVisible && (
+              <div className="header-accountBtn-toggle" id="accountBtn-toggle">
+                <div className="accountbox-main-container">
+                  {localStorage.getItem('auth-token') ? (
+                    <div>
+                      <Link
+                        onClick={() => {
+                          setMenu('dashboard');
+                        }}
+                        className={menu === 'dashboard' ? 'link menu-active' : 'link'}
+                        to="/user/dashboard"
+                      >
+                        Dashboard
+                      </Link>
+                      <div
+                        className="link"
+                        onClick={() => {
+                          localStorage.removeItem('auth-token');
+                          window.location.replace('/');
+                        }}
+                      >
+                        Logout
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <Link className="link" to="/login">
+                        Login/Signup
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
           <span className="cart-icon navbar-icon">
-            <Link to="/cart">
+            <Link
+              onClick={() => {
+                setMenu('cart');
+              }}
+              to="/cart"
+            >
               <button type="submit" id="mainBtn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={menu === 'cart' ? 'icon-svg active' : 'icon-svg'}
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <circle cx="10" cy="20.5" r="1" />
                   <circle cx="18" cy="20.5" r="1" />
                   <path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1" />
                 </svg>
-                <span className="cart-count cart-list">{getTotalCartItems()}</span>
+                <span className={menu === 'cart' ? 'cart-count cart-list active' : 'cart-count cart-list'}>{getTotalCartItems()}</span>
               </button>
             </Link>
           </span>
