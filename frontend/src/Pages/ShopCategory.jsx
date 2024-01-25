@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import './CSS/ShopCategory.css';
+// import './CSS/ShopCategory.css';
 import { ShopContext } from '../Context/ShopContext';
 import Item from '../Components/Items/Item';
 import Breadcrum from '../Components/Breadcrums/Breadcrum';

@@ -30,18 +30,20 @@ const CartItems = () => {
                       <div key={e.id}>
                         <div className="shoppingCart-product-item">
                           <div className="shoppingCart-product-image">
-                            <img src={e.image} loading="lazy" alt="" />
+                            <Link to={`/product/${e.id}`}>
+                              <img src={e.image} loading="lazy" alt="" />
+                            </Link>
                           </div>
                           <div className="shoppingCart-product-name">
-                            <div>Name</div>
+                            <div className="shoppingCart-product-item-heading">Name</div>
                             <div>{e.name}</div>
                           </div>
                           <div className="shoppingCart-product-quantity">
-                            <div>Quantity</div>
+                            <div className="shoppingCart-product-item-heading">Quantity</div>
                             <div className="shoppingCart-product-quantity-input">{cartItems[e.id]}</div>
                           </div>
                           <div className="shoppingCart-product-price">
-                            <div>Price</div>
+                            <div className="shoppingCart-product-item-heading">Price</div>
                             <div>${e.new_price * cartItems[e.id]}</div>
                           </div>
                           <div className="shoppingCart-product-delete">

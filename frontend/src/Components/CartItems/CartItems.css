@@ -108,7 +108,10 @@
     cursor: pointer;
 }
 
-
+.shoppingCart-product-item-heading {
+    color: #1c1c1c;
+    font-weight: 600;
+}
 
 .shoppingCart-main-container {
     max-width: 1100px;
@@ -161,10 +164,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    width: 5rem;
 }
 
 .shoppingCart-main-container .shoppingCart-productDetail-container .shoppingCart-product-container .shoppingCart-product-items .shoppingCart-product-item .shoppingCart-product-image img {
-    width: 100px;
+    height: 120px;
+    width: 100%;
+    overflow: hidden;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: 50% 0%;
+    object-position: 50% 0%;
 }
 
 .shoppingCart-main-container .shoppingCart-productDetail-container .shoppingCart-product-container .shoppingCart-product-items .shoppingCart-product-item .shoppingCart-product-name {
@@ -330,4 +341,3 @@
 .shoppingCart-main-container .shoppingCart-discount-container div button {
     color: #1a1a1a;
 }
-
