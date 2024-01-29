@@ -176,7 +176,9 @@ const Users = mongoose.model('Users', {
     name: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
+    role: { type: String, required: true },
     cartData: { type: Object },
+    purchaseHistory: { type: Object },
     date: { type: Date, default: Date.now },
 })
 
@@ -186,27 +188,24 @@ app.post('/signup', async (req, res) => {
     if (check) {
         return res.status(400).json({ success: false, message: "Email Already Exists" })
     }
-
     let cart = {};
     for (let i = 0; i < 300; i++) {
         cart[i] = 0;
     }
-
     const user = new Users({
         name: req.body.username,
         email: req.body.email,
         password: req.body.password,
+        role: "user",
         cartData: cart,
+        purchaseHistory: [],
     });
-
     await user.save();
-
     const data = {
         user: {
             id: user.id,
         }
     }
-
     const token = jwt.sign(data, 'secret_ecom')
     res.json({ success: true, token })
 })
@@ -273,6 +272,14 @@ app.post('/addtocart', fetchUser, async (req, res) => {
     res.send({ msg: "Product Added" })
 })
 
+// Creating endpoint for adding products to purchasehistory
+app.post('/addtopurchasehistory', fetchUser, async (req, res) => {
+    let userData = await Users.findOne({ _id: req.user.id });
+    userData.purchaseHistory.push(req.body.item);
+    await Users.findOneAndUpdate({ _id: req.user.id }, { purchaseHistory: userData.purchaseHistory });
+    res.send({ msg: "Product History Added" })
+})
+
 // Creating endpoint to remove product from cartdata
 app.post('/removefromcart', fetchUser, async (req, res) => {
     console.log("removed", req.body.itemId);
@@ -282,17 +289,15 @@ app.post('/removefromcart', fetchUser, async (req, res) => {
     res.send({ msg: "Product Removed" })
 })
 
+// Creating endpoint to remove all products from cartdata
 app.post('/removeAllFromCart', fetchUser, async (req, res) => {
     console.log("added", req.body.itemId);
     let userData = await Users.findOne({ _id: req.user.id });
-
     let cart = {};
     for (let i = 0; i < 300; i++) {
         cart[i] = 0;
     }
-
     userData.cartData = cart;
-
     await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData });
     res.send({ msg: "Cart Cleared" })
 })

@@ -68,9 +68,23 @@ const ShopContextProvider = (props) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ itemId: itemId }),
-      })
-        .then((response) => response.json())
-        // .then((data) => console.log(data));
+      }).then((response) => response.json());
+      // .then((data) => console.log(data));
+    }
+  };
+
+  const addToPurchaseHistory = (item) => {
+    if (localStorage.getItem('auth-token')) {
+      fetch(`${BASE_URL}/addtopurchasehistory`, {
+        method: 'POST',
+        headers: {
+          Accept: 'form-data',
+          'auth-token': `${localStorage.getItem('auth-token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ item: item }),
+      }).then((response) => response.json());
+      // .then((data) => console.log(data));
     }
   };
 
@@ -85,9 +99,8 @@ const ShopContextProvider = (props) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ itemId: 0 }),
-      })
-        .then((response) => response.json())
-        // .then((data) => console.log(data));
+      }).then((response) => response.json());
+      // .then((data) => console.log(data));
     }
     // console.log(cartItems);
   };
@@ -103,9 +116,8 @@ const ShopContextProvider = (props) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ itemId: itemId }),
-      })
-        .then((response) => response.json())
-        // .then((data) => console.log(data));
+      }).then((response) => response.json());
+      // .then((data) => console.log(data));
     }
   };
 
@@ -139,6 +151,7 @@ const ShopContextProvider = (props) => {
     getTotalCartAmount,
     getTotalCartItems,
     clearCart,
+    addToPurchaseHistory,
   };
 
   return <ShopContext.Provider value={contextValue}>{props.children}</ShopContext.Provider>;

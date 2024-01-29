@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { ShopContext } from '../../Context/ShopContext';
 
 const PayPalCheckoutBtn = (props) => {
-  const { all_product, clearCart } = useContext(ShopContext);
+  const { all_product, clearCart, addToPurchaseHistory } = useContext(ShopContext);
 
   const { products } = props;
 
@@ -43,9 +43,9 @@ const PayPalCheckoutBtn = (props) => {
   return all_product.length > 0 ? (
     <PayPalButtons
       style={{
+        height: 40,
         // color: 'silver',
         // layout: 'horizontal',
-        height: 40,
         // tagline: false,
         // shape: 'pill',
       }}
@@ -82,6 +82,7 @@ const PayPalCheckoutBtn = (props) => {
         const order = await actions.order.capture();
         console.log(order);
         // console.log(order.id);
+        addToPurchaseHistory(order);
 
         clearCart();
       }}

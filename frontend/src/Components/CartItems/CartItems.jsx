@@ -110,7 +110,7 @@ const CartItems = () => {
                 <h1 className="shoppingCart-productPrice-flatrate">Flat Rate: 10$</h1>
                 <div className="shoppingCart-productPrice-total">
                   <h1 className="shoppingCart-productPrice-heading">Total:</h1>
-                  <h1 className="shoppingCart-productPrice-price">${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 10}</h1>
+                  <h1 className="shoppingCart-productPrice-price">${getTotalCartAmount()}</h1>
                 </div>
               </div>
               <div className="shoppingCart-productPrice-buttons">
