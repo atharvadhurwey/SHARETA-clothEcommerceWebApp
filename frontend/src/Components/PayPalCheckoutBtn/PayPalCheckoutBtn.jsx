@@ -3,20 +3,13 @@ import React, { useContext } from 'react';
 import { ShopContext } from '../../Context/ShopContext';
 
 const PayPalCheckoutBtn = (props) => {
-  const { all_product, removeFromCart } = useContext(ShopContext);
+  const { all_product, clearCart } = useContext(ShopContext);
 
   const { products } = props;
 
   const total = products.reduce((accumulator, item) => {
     return accumulator + item.new_price;
   }, 0);
-
-  const handleCart = () => {
-    products.forEach((item) => {
-      removeFromCart(item.id);
-      console.log('this is item id:', item);
-    });
-  };
 
   const allItems = products.map((item) => {
     return {
@@ -70,7 +63,7 @@ const PayPalCheckoutBtn = (props) => {
         return actions.order.create({
           purchase_units: [
             {
-              description: 'Whote Product',
+              description: 'All Products',
               amount: {
                 value: total,
                 breakdown: {
@@ -90,7 +83,7 @@ const PayPalCheckoutBtn = (props) => {
         console.log(order);
         // console.log(order.id);
 
-        handleCart();
+        clearCart();
       }}
       onCancel={() => {}}
       onError={(err) => {

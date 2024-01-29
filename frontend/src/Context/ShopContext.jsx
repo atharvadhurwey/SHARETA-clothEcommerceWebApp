@@ -70,8 +70,26 @@ const ShopContextProvider = (props) => {
         body: JSON.stringify({ itemId: itemId }),
       })
         .then((response) => response.json())
-        .then((data) => console.log(data));
+        // .then((data) => console.log(data));
     }
+  };
+
+  const clearCart = (itemId) => {
+    setCartItems(getDefaultCart());
+    if (localStorage.getItem('auth-token')) {
+      fetch(`${BASE_URL}/removeAllFromCart`, {
+        method: 'POST',
+        headers: {
+          Accept: 'form-data',
+          'auth-token': `${localStorage.getItem('auth-token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ itemId: 0 }),
+      })
+        .then((response) => response.json())
+        // .then((data) => console.log(data));
+    }
+    // console.log(cartItems);
   };
 
   const removeFromCart = (itemId) => {
@@ -87,7 +105,7 @@ const ShopContextProvider = (props) => {
         body: JSON.stringify({ itemId: itemId }),
       })
         .then((response) => response.json())
-        .then((data) => console.log(data));
+        // .then((data) => console.log(data));
     }
   };
 
@@ -120,6 +138,7 @@ const ShopContextProvider = (props) => {
     removeFromCart,
     getTotalCartAmount,
     getTotalCartItems,
+    clearCart,
   };
 
   return <ShopContext.Provider value={contextValue}>{props.children}</ShopContext.Provider>;
