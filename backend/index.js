@@ -282,6 +282,15 @@ app.post('/removefromcart', fetchUser, async (req, res) => {
     res.send("Removed")
 })
 
+app.post('/removeAllFromCart', fetchUser, async (req, res) => {
+    console.log('item removed')
+    // console.log("removed all products", req.body.itemId);
+    // let userData = await Users.findOne({ _id: req.user.id });
+    // if (userData.cartData[req.body.itemId] > 0) userData.cartData[req.body.itemId] -= 1;
+    // await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData });
+    // res.send("Removed")
+})
+
 // Creating endpoint to get cartdata
 app.post('/getcart', fetchUser, async (req, res) => {
     console.log('GetCart')

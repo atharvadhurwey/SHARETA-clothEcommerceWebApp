@@ -3,9 +3,38 @@ import './CartItems.css';
 import { ShopContext } from '../../Context/ShopContext';
 import Breadcrum from '../Breadcrums/Breadcrum';
 import { Link } from 'react-router-dom';
+import PayPalCheckoutBtn from '../PayPalCheckoutBtn/PayPalCheckoutBtn';
 
 const CartItems = () => {
   const { all_product, cartItems, removeFromCart, getTotalCartAmount } = useContext(ShopContext);
+
+  // const test_products = [
+  //   {
+  //     id: 1,
+  //     name: 'Yo',
+  //     description: 'First Product.',
+  //     price: 100,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'Yo',
+  //     description: 'Second Product.',
+  //     price: 100,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: 'Yo',
+  //     description: 'Third Product.',
+  //     price: 100,
+  //   },
+  // ];
+
+  const allproducts = [];
+  const createProductsList = (item) => {
+    allproducts.push(item);
+    // console.log(allproducts);
+  };
+
   return (
     all_product.length > 0 && (
       <>
@@ -26,6 +55,7 @@ const CartItems = () => {
 
                 {all_product.map((e) => {
                   if (cartItems[e.id] > 0) {
+                    createProductsList(e);
                     return (
                       <div key={e.id}>
                         <div className="shoppingCart-product-item">
@@ -84,9 +114,12 @@ const CartItems = () => {
                 </div>
               </div>
               <div className="shoppingCart-productPrice-buttons">
-                <Link>
+                <PayPalCheckoutBtn products={allproducts} />
+                {/* <div>breaker</div>
+                <PayPal /> */}
+                {/* <Link>
                   <button className="btn-5">Proceed to check out</button>
-                </Link>
+                </Link> */}
                 <Link to="/cloths">
                   <button className="btn-5">Continue Shopping</button>
                 </Link>
