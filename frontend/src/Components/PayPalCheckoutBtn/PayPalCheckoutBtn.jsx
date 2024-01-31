@@ -80,7 +80,7 @@ const PayPalCheckoutBtn = (props) => {
       }}
       onApprove={async (data, actions) => {
         const order = await actions.order.capture();
-        console.log(order);
+        // console.log(order);
         // console.log(order.id);
         addToPurchaseHistory(order);
 

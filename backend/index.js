@@ -309,6 +309,21 @@ app.post('/getcart', fetchUser, async (req, res) => {
     res.send(userData.cartData);
 })
 
+app.post('/getorders', fetchUser, async (req, res) => {
+    console.log('GetOrders')
+    let userData = await Users.findOne({ _id: req.user.id });
+    res.send(userData.purchaseHistory);
+})
+
+app.post('/getuserdetails', fetchUser, async (req, res) => {
+    console.log('GetUserDetails')
+    let userData = await Users.findOne({ _id: req.user.id });
+    console.log(userData.name)
+    console.log(userData.email)
+    res.send({ name: userData.name, email: userData.email });
+})
+
+
 app.listen(port, (error) => {
     if (!error) {
         console.log(`Server is running on port ${port}`);

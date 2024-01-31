@@ -26,7 +26,7 @@ function App() {
   useLayoutEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [pathname]);
-  
+
   return (
     <div>
       {/* <Navbar /> */}

@@ -16,6 +16,8 @@ const getDefaultCart = () => {
 const ShopContextProvider = (props) => {
   const [all_product, setAll_Product] = useState([]);
   const [cartItems, setCartItems] = useState(getDefaultCart());
+  const [purchaseHistory, setPurchaseHistory] = useState([]);
+  const [userDetails, setUserDetails] = useState([]);
 
   useQuery('allproducts', () => {
     fetch(`${BASE_URL}/allproducts`)
@@ -34,6 +36,30 @@ const ShopContextProvider = (props) => {
       })
         .then((response) => response.json())
         .then((data) => setCartItems(data));
+
+      fetch(`${BASE_URL}/getorders`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/form-data',
+          'auth-token': `${localStorage.getItem('auth-token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: '',
+      })
+        .then((response) => response.json())
+        .then((data) => setPurchaseHistory(data));
+
+      fetch(`${BASE_URL}/getuserdetails`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/form-data',
+          'auth-token': `${localStorage.getItem('auth-token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: '',
+      })
+        .then((response) => response.json())
+        .then((data) => setUserDetails(data));
     }
   });
 
@@ -146,6 +172,8 @@ const ShopContextProvider = (props) => {
   const contextValue = {
     all_product,
     cartItems,
+    purchaseHistory,
+    userDetails,
     addToCart,
     removeFromCart,
     getTotalCartAmount,

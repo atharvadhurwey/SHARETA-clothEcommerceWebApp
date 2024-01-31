@@ -3,6 +3,17 @@
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
+
+    ::-moz-selection {
+        /* Code for Firefox */
+        color: #ef3636;
+        background: white;
+    }
+
+    ::selection {
+        color: #ef3636;
+        background: white;
+    }
 }
 
 html,
@@ -115,6 +126,12 @@ button:hover {
 .main-header {
     color: #1a1a1a;
     background-color: #ffffff;
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
 }
 
 .main-header .header-content {

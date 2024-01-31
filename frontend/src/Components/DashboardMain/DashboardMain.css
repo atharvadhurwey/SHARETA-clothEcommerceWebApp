@@ -1,0 +1,43 @@
+.dashboardMain-container {
+    margin: .3rem;
+}
+
+.dashboardMain-heading {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.dashboardMain-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.dashboardMain-profilePic {
+    width: 130px;
+    height: 130px;
+}
+
+.dashboardMain-profilePic img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.dashboardMain-profileContent .dashboardMain-item {
+    line-height: 1;
+}
+
+.dashboardMain-profileContent .dashboardMain-item:nth-child(1) {
+    margin-bottom: .8rem;
+}
+
+.dashboardMain-profileContent .dashboardMain-item>:nth-child(1) {
+    text-transform: uppercase;
+    color: #ef3636;
+}
+
+.dashboardMain-profileContent .dashboardMain-item>:nth-child(2) {
+    font-size: 1.4rem;
+}
