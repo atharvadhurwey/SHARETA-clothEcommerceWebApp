@@ -6,10 +6,10 @@ import DashboardOrders from '../Components/DashboardOrders/DashboardOrders';
 import DashboardMain from '../Components/DashboardMain/DashboardMain';
 
 const Dashboard = () => {
-  const [userSelect, setUserSelect] = useState('dashboard');
+  const [userSelect, setUserSelect] = useState('profile');
 
   const getComponent = () => {
-    if (userSelect === 'dashboard') {
+    if (userSelect === 'profile') {
       return <DashboardMain />;
     } else if (userSelect === 'orders') {
       return <DashboardOrders />;
@@ -27,10 +27,10 @@ const Dashboard = () => {
               <div className="dashboard-item">
                 <Link
                   onClick={() => {
-                    setUserSelect('dashboard');
+                    setUserSelect('profile');
                   }}
                 >
-                  Dashboard
+                  Profile
                 </Link>
               </div>
               <div className="dashboard-item">

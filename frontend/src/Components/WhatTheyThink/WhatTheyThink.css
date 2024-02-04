@@ -19,3 +19,19 @@
     position: relative;
     overflow: hidden;
 }
+
+@media only screen and (max-width: 1200px) {
+    .whatTheyThinkAboutUs {
+        max-width: clamp(18.75rem, 0.5682rem + 90.9091vw, 68.75rem);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .whatTheyThinkAboutUs {
+        margin-top: 65px;
+    }
+
+    .whatTheyThinkAboutUs h1 {
+        font-size: clamp(1.25rem, 1.1rem + 0.75vw, 2rem);
+    }
+}

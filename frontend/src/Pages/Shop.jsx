@@ -13,7 +13,7 @@ const Shop = () => {
   return (
     <div>
       <Hero />
-      
+
       {/* black shape  */}
       <div className="shape"></div>
 
@@ -28,7 +28,7 @@ const Shop = () => {
           <div className="shape2"></div>
         </div>
       </div>
-      
+
       <WhatTheyThink />
       <CompanyLogo />
       {/* <Offers />

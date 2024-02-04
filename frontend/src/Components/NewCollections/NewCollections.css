@@ -33,7 +33,7 @@
 }
 
 .ourProducts h1 {
-    font-size: 35px;
+    font-size: clamp(1.25rem, 1.1rem + 0.75vw, 2rem);
     color: #1a1a1a;
 }
 
@@ -46,4 +46,25 @@
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 30px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .ourProducts {
+        max-width: clamp(18.75rem, 0.5682rem + 90.9091vw, 68.75rem);
+    }
+
+    .product-container {
+        max-width: clamp(18.75rem, 0.5682rem + 90.9091vw, 68.75rem);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .ourProducts {
+        padding-top: 20px;
+    }
+
+    .product-container {
+
+        gap: clamp(0rem, -2.1429rem + 10.7143vw, 1.875rem);
+    }
 }

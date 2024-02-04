@@ -20,6 +20,10 @@ const Header = () => {
     setCategoryMenuVisible(false);
     setAccountMenuVisible(false);
   };
+  const handleToggleMenu = () => {
+    const toggleMenu = document.querySelector('.toggle_menu_container');
+    toggleMenu.classList.toggle('active');
+  };
 
   return (
     <header className="main-header">
@@ -254,7 +258,7 @@ const Header = () => {
             </div>
           </div> */}
         </div>
-        <div className="toggle_menu" id="toggle-menu">
+        <div className="toggle_menu" id="toggle-menu" onClick={handleToggleMenu}>
           <i>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -262,6 +266,12 @@ const Header = () => {
               <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
           </i>
+        </div>
+        <div className="toggle_menu_container">
+          <div onClick={handleToggleMenu}>CLOSE</div>
+          <div>hello</div>
+          <div>world</div>
+          <div>yo</div>
         </div>
       </div>
       <div className="header-searchBtn-toggle" style={{ display: 'none' }} id="searchBtn-toggle">

@@ -10,3 +10,56 @@
     justify-content: space-evenly;
     align-items: center;
 }
+
+.companyLogos .companyLogo:nth-child(1)>svg {
+    width: 105px;
+    height: 40px;
+}
+
+.companyLogos .companyLogo:nth-child(2)>svg {
+    width: 72px;
+    height: 40px;
+}
+
+.companyLogos .companyLogo:nth-child(3)>svg {
+    width: 52px;
+    height: 44px;
+}
+
+.companyLogos .companyLogo:nth-child(4)>svg {
+    width: 175px;
+    height: 40px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .ourProducts {
+        max-width: clamp(18.75rem, 0.5682rem + 90.9091vw, 68.75rem);
+    }
+
+    .product-container {
+        max-width: clamp(18.75rem, 0.5682rem + 90.9091vw, 68.75rem);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .companyLogo-container {
+        margin-top: 20px;
+    }
+
+    .companyLogos .companyLogo:nth-child(1)>svg {
+        width: 60px;
+    }
+
+    .companyLogos .companyLogo:nth-child(2)>svg {
+        width: 40px;
+    }
+
+    .companyLogos .companyLogo:nth-child(3)>svg {
+        width: 30px;
+    }
+
+    .companyLogos .companyLogo:nth-child(4)>svg {
+        width: 100px;
+    }
+}

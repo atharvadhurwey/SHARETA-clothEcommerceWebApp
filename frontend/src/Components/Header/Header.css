@@ -1,27 +1,3 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: "Poppins", sans-serif;
-
-    ::-moz-selection {
-        /* Code for Firefox */
-        color: #ef3636;
-        background: white;
-    }
-
-    ::selection {
-        color: #ef3636;
-        background: white;
-    }
-}
-
-html,
-body {
-    width: 100%;
-    height: 100%;
-}
-
 .svg-icon {
     width: 1.2em;
     height: 1.2em;
@@ -138,12 +114,12 @@ button:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 22px 10%;
+    padding: clamp(0.5rem, 0.325rem + 0.875vw, 1.375rem) 5vw;
 }
 
 .main-header .header-content .left a {
     cursor: pointer;
-    font-size: 30px;
+    font-size: clamp(1.3125rem, 1.2rem + 0.5625vw, 1.875rem);
     color: #ef3636;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -461,22 +437,24 @@ button:hover {
     background-color: #1a1a1a;
 }
 
+.toggle_menu_container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a;
+    top: 0;
+    left: 100%;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.toggle_menu_container.active {
+    left: 0;
+}
+
+
 /* MEDIA QUERIES */
-@media screen and (max-width: 768px) {
-    .megamenu {
-        flex-direction: column;
-        position: static;
-        box-shadow: none;
-        border-radius: 0;
-        height: 0;
-        max-width: 350px;
-        overflow: hidden;
-    }
-
-    .dropdown:hover .megamenu {
-        height: 100%;
-    }
-
+@media screen and (max-width: 880px) {
     .center {
         z-index: 1;
         position: absolute;
@@ -516,12 +494,17 @@ button:hover {
     }
 
     .right {
-        margin-right: 10vh;
+        position: absolute !important;
+        right: 12vw;
+    }
+
+    .main-header .header-content .right {
+        gap: 10px;
     }
 
     .toggle_menu {
         position: absolute;
-        right: 10vh;
+        right: 6vw;
     }
 
     .show_menu {

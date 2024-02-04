@@ -309,17 +309,17 @@ app.post('/getcart', fetchUser, async (req, res) => {
     res.send(userData.cartData);
 })
 
+// Creating endpoint to get purchasehistory
 app.post('/getorders', fetchUser, async (req, res) => {
     console.log('GetOrders')
     let userData = await Users.findOne({ _id: req.user.id });
     res.send(userData.purchaseHistory);
 })
 
+// Creating endpoint to get userdetails
 app.post('/getuserdetails', fetchUser, async (req, res) => {
     console.log('GetUserDetails')
     let userData = await Users.findOne({ _id: req.user.id });
-    console.log(userData.name)
-    console.log(userData.email)
     res.send({ name: userData.name, email: userData.email });
 })
 
