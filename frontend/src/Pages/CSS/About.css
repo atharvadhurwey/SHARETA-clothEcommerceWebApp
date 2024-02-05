@@ -1,5 +1,3 @@
-
-
 /* .upperBanner-container .upperBanner-color {
     z-index: 0;
     position: absolute;
@@ -129,6 +127,7 @@
     display: flex;
     justify-content: space-between;
     margin: 15px 0;
+    flex-wrap: wrap;
 }
 
 .about-main-container .ourTeam-main-containeer .ourTeam-card-container .ourTeam-card {
@@ -260,4 +259,47 @@
     height: 100%;
     -o-object-fit: cover;
     object-fit: cover;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .about-main-container .weAre-container {
+        width: auto;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .about-main-container .weAre-container .weAre-content {
+        padding-right: 0;
+        width: 100%;
+        align-items: center;
+    }
+
+    .about-main-container .weAre-container .weAre-image {
+        margin: 0 auto;
+        width: 80%;
+    }
+
+    .about-main-container .ourTeam-main-containeer {
+        margin: 50px auto;
+    }
+
+    .ourTeam-heading-content {
+        text-align: center;
+    }
+
+    .about-main-container .ourTeam-main-containeer .ourTeam-card-container {
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .weAre-container {
+        max-width: clamp(18.75rem, 0.5682rem + 90.9091vw, 68.75rem);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .about-main-container .ourServices-Container {
+        display: none;
+    }
 }
