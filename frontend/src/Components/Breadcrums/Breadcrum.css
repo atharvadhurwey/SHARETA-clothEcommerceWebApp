@@ -112,3 +112,9 @@
     color: #ffffff;
     text-decoration: none;
 }
+
+@media only screen and (max-width: 1100px) {
+    .upperBanner-container .upperBanner-content {
+        max-width: clamp(18.75rem, 0.8013rem + 89.7436vw, 62.5rem);
+    }
+}

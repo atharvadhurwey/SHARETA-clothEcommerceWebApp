@@ -64,7 +64,6 @@
     }
 
     .product-container {
-
         gap: clamp(0rem, -2.1429rem + 10.7143vw, 1.875rem);
     }
 }

@@ -1,5 +1,3 @@
-
-
 /* .upperBanner-container .upperBanner-color {
     z-index: 0;
     position: absolute;
@@ -113,4 +111,25 @@
 
 .brandlist-main-container .card-container .card-item:hover .card-hiddenText {
     opacity: 1;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .brandlist-main-container {
+        max-width: clamp(18.75rem, 0.5682rem + 90.9091vw, 68.75rem);
+    }
+
+    .brandlist-main-container .card-container .card-item img {
+        height: clamp(17.5rem, 11.25rem + 16.6667vw, 23.75rem);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .brandlist-main-container .card-container .card-item {
+        flex: 0 1 auto;
+    }
+
+    .brandlist-main-container .card-container .card-item img {
+        height: auto;
+    }
 }

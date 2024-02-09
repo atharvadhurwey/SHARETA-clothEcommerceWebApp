@@ -47,3 +47,10 @@
 .filteredProducts-main-container .product-container {
     justify-content: center;
 }
+
+
+@media only screen and (max-width: 320px) {
+    .filteredProducts-main-container .product-container {
+        justify-content: space-between;
+    }
+}
