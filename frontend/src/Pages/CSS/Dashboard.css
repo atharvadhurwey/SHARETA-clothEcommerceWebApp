@@ -1,6 +1,6 @@
 .dashboard-main-container {
     margin: 80px auto;
-    max-width: 1200px;
+    max-width: 1100px;
 }
 
 .dashboard-main-container .dashboard-main-heading {
@@ -259,4 +259,16 @@
 
 .dashboard-main-container .dashboard-main-content .dashboard-right .dashboard-right-addaddress-container .addaddress-success-msg-container .addaddress-success-msg {
     color: #ef3636;
+}
+
+@media only screen and (max-width: 1200px) {
+    .dashboard-main-container {
+        max-width: clamp(18.75rem, 0.5682rem + 90.9091vw, 68.75rem);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .dashboard-main-container .dashboard-main-content .dashboard-left .dashboard-left-items-container .dashboard-item a {
+        font-size: .8rem;
+    }
 }

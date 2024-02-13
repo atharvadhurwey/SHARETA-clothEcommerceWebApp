@@ -341,3 +341,100 @@
 .shoppingCart-main-container .shoppingCart-discount-container div button {
     color: #1a1a1a;
 }
+
+
+@media only screen and (max-width: 1200px) {
+    .shoppingCart-main-container {
+        max-width: clamp(18.75rem, 0.5682rem + 90.9091vw, 68.75rem);
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .shoppingCart-main-container .shoppingCart-productDetail-container {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .shoppingCart-main-container .shoppingCart-productDetail-container .shoppingCart-product-container {
+        width: 100%;
+    }
+
+    .shoppingCart-main-container .shoppingCart-productDetail-container .shoppingCart-productPrice-container {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .shoppingCart-main-container .shoppingCart-productDetail-container .shoppingCart-productPrice-container .shoppingCart-productPrice-buttons>a {
+        display: none;
+    }
+
+    .shoppingCart-product-container-line {
+        display: none;
+    }
+
+    .shoppingCart-main-container .shoppingCart-productDetail-container .shoppingCart-product-container .shoppingCart-product-items .shoppingCart-product-item {
+        max-width: 10rem;
+        flex-direction: column;
+        padding-right: 0px;
+        align-items: flex-start;
+        gap: 3px;
+        position: relative;
+    }
+
+    .shoppingCart-main-container .shoppingCart-productDetail-container .shoppingCart-product-container .shoppingCart-product-items .shoppingCart-product-item .shoppingCart-product-image {
+        width: 10rem;
+        pointer-events: none;
+    }
+
+    .shoppingCart-main-container .shoppingCart-productDetail-container .shoppingCart-product-container .shoppingCart-product-items .shoppingCart-product-item .shoppingCart-product-image img {
+        height: 250px;
+        width: auto;
+    }
+
+    .shoppingCart-main-container .shoppingCart-productDetail-container .shoppingCart-product-container .shoppingCart-product-items .shoppingCart-product-item .shoppingCart-product-name {
+        width: auto;
+        font-size: .8rem;
+        line-height: 1.1;
+    }
+
+    .shoppingCart-main-container .shoppingCart-productDetail-container .shoppingCart-product-container .shoppingCart-product-items .shoppingCart-product-item .shoppingCart-product-quantity {
+        font-size: .8rem;
+        flex-direction: row;
+    }
+
+    .shoppingCart-product-price {
+        display: flex;
+        font-size: .8rem;
+        gap: 10px;
+    }
+
+    .shoppingCart-main-container .shoppingCart-productDetail-container .shoppingCart-product-container .shoppingCart-product-items .shoppingCart-product-item .shoppingCart-product-delete {
+        position: absolute;
+        right: 2px;
+        top: 2px;
+    }
+
+    .shoppingCart-product-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .shoppingCart-main-container .shoppingCart-productDetail-container .shoppingCart-productPrice-container {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .shoppingCart-product-items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+}

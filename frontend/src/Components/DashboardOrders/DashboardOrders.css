@@ -19,3 +19,20 @@
     padding: .5rem;
     border-radius: .5rem;
 }
+
+@media only screen and (max-width: 600px) {
+    .dashboard-orders-heading {
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+
+    .dashboard-orders-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+        grid-gap: 10px;
+    }
+
+    .dashboard-orders-items>.dashboard-orders-item {
+        font-size: .8rem;
+    }
+}
