@@ -1,13 +1,13 @@
 .login-signup-wrapper {
-    margin: 60px 0;
+    margin: 60px 10px;
     display: flex;
     justify-content: center;
-    gap: 10vw;
+    gap: 8rem;
 }
 
 .login-signup-sideBanner-img {
     height: 80vh;
-    width: 25vw;
+    width: 28rem;
     object-fit: cover;
 }
 
@@ -27,7 +27,7 @@
 
 .login-signup-sideContent-container>input {
     height: 3rem;
-    width: 25vw;
+    /* width: 25vw; */
     padding-left: 20px;
     border: 2px solid #ef3636;
     outline: none;
@@ -60,10 +60,56 @@
 
 .login-signup-sideContent-agree {
     text-align: left;
-    width: 25vw;
     color: #1c1c1c;
     font-size: 1rem;
     font-weight: 600;
+}
+
+@media only screen and (max-width: 1200px) {
+    .login-signup-wrapper {
+        gap: clamp(1rem, -17.9259rem + 34.5679vw, 8rem);
+    }
+}
+
+@media only screen and (max-width: 876px) {
+    .login-signup-wrapper {
+        flex-direction: column;
+    }
+
+    .login-signup-sideBanner-container {
+        display: none;
+    }
+
+    .login-signup-sideContent-container {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (max-width: 876px) {
+    .login-signup-sideContent-heading {
+        font-size: clamp(1rem, 0.4245rem + 2.8777vw, 2rem);
+    }
+
+    .login-signup-sideContent-container>input {
+        font-size: 1rem;
+    }
+
+    .login-signup-sideContent-agree {
+        font-size: clamp(0.8rem, 0.6849rem + 0.5755vw, 1rem);
+    }
+
+    .login-signup-sideContent-container {
+        width: 95%;
+    }
+
+    .login-signup-sideContent-button {
+        font-size: clamp(1rem, 0.7122rem + 1.4388vw, 1.5rem);
+    }
+
+    .login-signup-sideContent-state {
+        font-size: clamp(0.8rem, 0.6129rem + 0.9353vw, 1.125rem);
+    }
 }
 
 /* .loginsignup {
