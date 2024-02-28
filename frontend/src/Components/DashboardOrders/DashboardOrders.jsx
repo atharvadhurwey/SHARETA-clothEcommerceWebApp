@@ -28,7 +28,6 @@ const DashboardOrders = () => {
 
   return (
     <div className="dashboard-orders-container">
-      <div className="dashboard-orders-heading">My Orders</div>
       <div className="dashboard-orders-wrapper">
         <div className="dashboard-orders-items">
           {purchaseHistory.length > 0 ? (

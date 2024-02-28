@@ -16,6 +16,7 @@
 .dashboardMain-profilePic {
     width: 130px;
     height: 130px;
+    margin-left: 18px;
 }
 
 .dashboardMain-profilePic img {

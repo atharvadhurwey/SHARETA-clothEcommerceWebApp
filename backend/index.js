@@ -320,7 +320,7 @@ app.post('/getorders', fetchUser, async (req, res) => {
 app.post('/getuserdetails', fetchUser, async (req, res) => {
     console.log('GetUserDetails')
     let userData = await Users.findOne({ _id: req.user.id });
-    res.send({ name: userData.name, email: userData.email });
+    res.send({ id: req.user.id, name: userData.name, email: userData.email });
 })
 
 
