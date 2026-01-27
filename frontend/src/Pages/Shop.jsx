@@ -4,7 +4,7 @@ import NewCollections from '../Components/NewCollections/NewCollections';
 import ShopByCategory from '../Components/ShopByCategory/ShopByCategory';
 import AboutUs from '../Components/AboutUs/AboutUs';
 import WhatTheyThink from '../Components/WhatTheyThink/WhatTheyThink';
-import CompanyLogo from '../Components/CompanyLogo/CompanyLogo';
+// import CompanyLogo from '../Components/CompanyLogo/CompanyLogo';
 // import NewsLetter from '../Components/NewsLetter/NewsLetter'
 // import Offers from '../Components/Offers/Offers'
 // import Popular from '../Components/Popular/Popular'
@@ -15,7 +15,7 @@ const Shop = () => {
       <Hero />
 
       {/* black shape  */}
-      <div className="shape"></div>
+      {/* <div className="shape"></div> */}
 
       <ShopByCategory />
       {/* <Popular /> */}
@@ -30,7 +30,7 @@ const Shop = () => {
       </div>
 
       <WhatTheyThink />
-      <CompanyLogo />
+      {/* <CompanyLogo /> */}
       {/* <Offers />
       <NewsLetter /> */}
     </div>

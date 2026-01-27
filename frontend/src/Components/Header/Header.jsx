@@ -268,10 +268,48 @@ const Header = () => {
           </i>
         </div>
         <div className="toggle_menu_container">
-          <div onClick={handleToggleMenu}>CLOSE</div>
-          <div>hello</div>
-          <div>world</div>
-          <div>yo</div>
+          <div className="toggle_menu_header">
+            <div className="left">
+              <Link to="/" onClick={handleToggleMenu}>Shareta.</Link>
+            </div>
+            <div className="close_menu_btn" onClick={handleToggleMenu}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </div>
+          </div>
+
+          <ul className="mobile_nav_list">
+            <li>
+              <Link to="/" onClick={() => { setMenu('shop'); handleToggleMenu(); }}>HOME</Link>
+            </li>
+            <li>
+              <Link to="/cloths" onClick={() => { setMenu('cloths'); handleToggleMenu(); }}>CLOTHS</Link>
+            </li>
+            <li className="mobile_category_section">
+              <span>CATEGORIES</span>
+              <div className="mobile_submenu">
+                <Link to="/mens" onClick={() => { setMenu('mens'); handleToggleMenu(); }}>Mens</Link>
+                <Link to="/womens" onClick={() => { setMenu('womens'); handleToggleMenu(); }}>Womens</Link>
+                <Link to="/kids" onClick={() => { setMenu('kids'); handleToggleMenu(); }}>Kids</Link>
+              </div>
+            </li>
+            <li>
+              <Link to="/brands" onClick={() => { setMenu('brands'); handleToggleMenu(); }}>BRANDS</Link>
+            </li>
+            <li>
+              <Link to="/about" onClick={() => { setMenu('about'); handleToggleMenu(); }}>ABOUT</Link>
+            </li>
+          </ul>
+          
+          <div className="mobile_footer">
+            {localStorage.getItem('auth-token') ? (
+                <button className="btn-5" onClick={() => { localStorage.removeItem('auth-token'); window.location.replace('/'); }}>Logout</button>
+            ) : (
+                <Link to="/login" onClick={handleToggleMenu} className="btn-5" style={{textDecoration:'none', textAlign:'center'}}>Login / Signup</Link>
+            )}
+          </div>
         </div>
       </div>
       <div className="header-searchBtn-toggle" style={{ display: 'none' }} id="searchBtn-toggle">

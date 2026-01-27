@@ -120,3 +120,74 @@
     text-decoration: underline;
     text-decoration-color: #ef3636;
 }
+
+
+
+/* --- Base Layout Fixes --- */
+.product-main-container .product-otherDetails-container {
+    max-width: 1100px;
+    margin: 40px auto; /* Added some breathing room from the top section */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.product-main-container .product-otherDetails-container .product-otherDetails .product-otherDetails-form {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 40px; /* Reduced from 100px for better fit */
+    flex-wrap: wrap; /* Allows tabs to wrap on very small screens */
+    padding: 0 10px;
+}
+
+/* --- Content Areas --- */
+.product-main-container .product-otherDetails-container .product-otherDetails-content .product-otherDetails-desc,
+.product-main-container .product-otherDetails-container .product-otherDetails-content .product-otherDetails-size,
+.product-main-container .product-otherDetails-container .product-otherDetails-content .product-otherDetails-return {
+    padding: 0 5vw; /* Reduced from 10vw for more text space on mobile */
+    text-align: center;
+    line-height: 1.6;
+    box-sizing: border-box;
+}
+
+/* Ensure the size guide image doesn't overflow */
+.sizeGuide_image_container img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* --- Mobile Responsiveness (Screens smaller than 768px) --- */
+@media (max-width: 768px) {
+    .product-main-container .product-otherDetails-container .product-otherDetails .product-otherDetails-form {
+        gap: 20px; /* Tighten tabs for mobile */
+    }
+
+    .product-main-container .product-otherDetails-container .product-otherDetails .product-otherDetails-form input {
+        font-size: 13px; /* Slightly smaller text for tab labels */
+    }
+
+    .product-main-container .product-otherDetails-container .product-otherDetails-content .product-otherDetails-return h1 {
+        font-size: 24px; /* Scaled down the large underlined headers */
+    }
+
+    .product-main-container .product-otherDetails-container .product-otherDetails-content .product-otherDetails-desc,
+    .product-main-container .product-otherDetails-container .product-otherDetails-content .product-otherDetails-return {
+        font-size: 14px; /* More readable body text for small screens */
+        padding: 0 15px; /* Side padding for text readability */
+    }
+}
+
+/* Extra small devices (Phones in portrait) */
+@media (max-width: 480px) {
+    .product-main-container .product-otherDetails-container .product-otherDetails .product-otherDetails-form {
+        flex-direction: column; /* Stack tabs vertically if they still don't fit */
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .product-main-container .product-otherDetails-container .product-otherDetails .product-otherDetails-form input {
+        height: auto;
+        padding: 5px 0;
+    }
+}
